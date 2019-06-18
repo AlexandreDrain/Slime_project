@@ -1,5 +1,5 @@
 <?php
-namespace src\Utilities;
+namespace App\Utilities;
 
 /**
  * Cette classe utilise PDO afin d'effectuer des opérations sur la BDD
@@ -28,7 +28,7 @@ class Database
     {
         // Connexion à MySQL
         $this->pdo = new \PDO(
-            'mysql:host=localhost;dbname=semaine_projet',
+            'mysql:host=localhost;dbname=catalogue_bdd',
             'root',
             null,
             [
