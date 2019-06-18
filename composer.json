@@ -1,11 +1,10 @@
 {
-    "name": "jerome/slim0619",
-    "description": "Projet PHP utilisant le MicroFramework Slim en version 3",
-    "type": "project",
+    "name": "stagiaire/slim_projet",
+    "description": "\u001b",
     "authors": [
         {
-            "name": "Jerome",
-            "email": "ambroise.jerome.formation@gmail.com"
+            "name": "AlexandreDrain",
+            "email": "alexendredrain@gmail.com"
         }
     ],
     "require": {

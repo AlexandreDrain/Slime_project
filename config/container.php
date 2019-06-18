@@ -6,12 +6,14 @@ use Slim\Http\Environment;
 use Slim\Http\Uri;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
+use App\Controller\ProductController;
+use App\Controller\AuthController;
 
 // Fetch DI Container
 $container = $app->getContainer();
 
 // Register Twig View helper
-$container['view'] = function ($c) {
+$container['view'] = function (ContainerInterface $c) {
     $view = new Twig(
         dirname(__DIR__) . '/templates',
         [
@@ -31,13 +33,24 @@ $container['view'] = function ($c) {
 $container[HomeController::class] = function(ContainerInterface $container) {
     return new HomeController($container->get('view'));
 };
+$container[ProductController::class] = function(ContainerInterface $container) {
+    return new ProductController($container->get('view'));
+};
+$container[AuthController::class] = function(ContainerInterface $container) {
+    return new AuthController($container->get('view'));
+};
+/*
+class Vues 
+{
+    public function vues($controller)
+    {
+        $container[$controller::class] = function(ContainerInterface $container) {
+        return new $controller($container->get('view'));
+        };
+    }
+}
 
-
-
-
-
-
-
-
-
-
+$app = new Vues();
+$toto = $app->vues('HomeController');
+$toto = $app->vues('ProductController');
+$toto = $app->vues('AuthController');*/

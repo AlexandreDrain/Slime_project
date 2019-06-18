@@ -19,4 +19,3 @@ require dirname(__DIR__) . '/config/routes.php';
 
 // Renvoi de la réponse au navigateur
 $app->run();
-
