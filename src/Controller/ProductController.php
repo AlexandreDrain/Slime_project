@@ -4,8 +4,8 @@ namespace App\Controller;
 use App\Utilities\AbstractController;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use src\Entity\Produit;
-use src\Utilities\Database;
+use App\Entity\Produit;
+use App\Utilities\Database;
 
 class ProductController extends AbstractController
 {

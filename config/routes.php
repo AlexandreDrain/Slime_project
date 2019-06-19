@@ -27,3 +27,4 @@ $app->group('/produit', function () {
 // Page de connexion 
 $app->get('/inscription', AuthController::class . ':register');
 $app->get('/connection', AuthController::class . ':connect');
+$app->get('/test', AuthController::class . ':test');

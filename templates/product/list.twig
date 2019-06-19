@@ -10,11 +10,11 @@
 			{% for product in products %}
 			<div class="col-4">
 				<div class="card">
-					<img src="/img/uploads/{{ product.imageName }}" class="card-img-top"
-					alt="Image de {{ product.imageName }}">
+					<img src="/img/uploads/{{ product.imageName() }}" class="card-img-top"
+					alt="Image de {{ product.imageName() }}">
 					<div class="card-body">
-						<h5 class="card-title">{{ product.name }}</h5>
-						<p class="card-text">{{ product.getShortDescription }}</p>
+						<h5 class="card-title">{{ product.name() }}</h5>
+						<p class="card-text">{{ product.getShortDescription() }}</p>
 						<a href="#" class="card-link btn btn-outline-info">Détail</a>
 					</div>
 				</div>
