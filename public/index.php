@@ -6,11 +6,10 @@ use DI\ContainerBuilder;
 use Slim\App;
 
 session_start();
-// Config
-$config = require dirname(__DIR__) . '/config/config.php';
 // PHP-DI
 $builder = new DI\ContainerBuilder();
 $builder->addDefinitions(dirname(__DIR__) . '/config/container.php');
+$builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
 $container = $builder->build();
 // On créé l'application Slim
 $app = new App($container);

@@ -15,6 +15,7 @@ use Slim\Router;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
+use App\Utilities\Database;
 
 return [
     'settings' => [
@@ -88,5 +89,14 @@ return [
     },
     Twig::class => function (ContainerInterface $container) {
         return $container->get('view');
+    },
+    Database::class => function (ContainerInterface $container) {
+        $parameters = $container->get('parameters');
+        return new Database(
+            $parameters['database_name'],
+            $parameters['database_user'],
+            $parameters['database_host'],
+            $parameters['databse_password']
+        );
     }
 ];
