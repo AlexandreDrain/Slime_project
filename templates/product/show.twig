@@ -3,5 +3,21 @@
 {% block title %}Slim porject{% endblock %}
 
 {% block body %}
-    <h1>Détails des produits</h1>
+	<h1>Détail du produit</h1>
+	<main class="container bg-light" style="
+		display: flex; 
+		flex-direction: column; 
+		align-items: center">
+		<figure style="max-width: 300px; heigth: auto;">
+			<img src="/img/uploads/{{ product.imageName() }}" 
+		class="card-img-top"
+		alt="Image de {{ product.imageName() }}"
+		style="width: 200px; heigth: auto;">
+	<figcaption>Image du produit</figcaption>
+	</figure>
+	<section>
+		<h5 class="card-title">{{ product.name() }}</h5>
+		<p class="card-text">{{ product.getShortDescription() }}</p>
+	</section>
+	</main>
 {% endblock %}

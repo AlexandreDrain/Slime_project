@@ -52,6 +52,23 @@ class Database
     }
 
     /**
+     * Prépare et exécute une requête préparé, protège contre les ingéction sql
+     * @param  string      $sql       Requête SQL
+     * @param  array       $params    Paramètres de la requête SQL
+     * @param  string|null $className La classe servant à stocker les résultats
+     * @return [type]                 Les données récupérées (ou rien du tout)
+     */
+    public function queryPrepared(string $sql, array $params, ?string $className = null): ?array
+    {
+        // Préparation de la requête SQL
+        $statement = $this->pdo->prepare($sql);
+        // Exécution de la requête SQL
+        $statement->execute($params);
+        // Retour des résultats
+        return $statement->fetchAll(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, $className);
+    }
+
+    /**
      * Execute une requête SQL pour :
      * - La création (INSERT INTO)
      * - La modification (UPDATE)

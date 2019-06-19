@@ -8,8 +8,10 @@ use Slim\App;
 session_start();
 // PHP-DI
 $builder = new DI\ContainerBuilder();
-$builder->addDefinitions(dirname(__DIR__) . '/config/container.php');
-$builder->addDefinitions(dirname(__DIR__) . '/config/config.php');
+$builder->addDefinitions(
+    dirname(__DIR__) . '/config/container.php',
+    dirname(__DIR__) . '/config/config.php'
+);
 $container = $builder->build();
 // On créé l'application Slim
 $app = new App($container);
