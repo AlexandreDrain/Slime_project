@@ -15,6 +15,7 @@ use Slim\Router;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
+
 return [
     'settings' => [
         'httpVersion' => '1.1',

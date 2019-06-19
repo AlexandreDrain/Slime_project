@@ -68,8 +68,7 @@ class FormValidator
             // On décompose la date de création en 3 parties
             $tabCreatedAt = explode('-', $_POST[$key]);
             // On vérifie qu'on a bien les 3 composantes de la date
-            if (
-                sizeof($tabCreatedAt) !== 3 ||
+            if (sizeof($tabCreatedAt) !== 3 ||
                 !checkdate($tabCreatedAt[1], $tabCreatedAt[2], $tabCreatedAt[0])
             ) {
                 $message = "Il faut saisir une date valide!";
@@ -93,7 +92,8 @@ class FormValidator
         }
         return $errors;
     }
-    public function generateInputText(string $key, string $type, string $label, array $errors): string {
+    public function generateInputText(string $key, string $type, string $label, array $errors): string
+    {
         $isError = array_key_exists($key, $errors) && !empty($errors[$key])? 'is-invalid' : '';
         $value = $_POST[$key] ?? '';
         $error = $errors[$key] ?? "";

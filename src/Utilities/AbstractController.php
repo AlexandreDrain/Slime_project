@@ -5,7 +5,7 @@ use Slim\Views\Twig;
 
 class AbstractController
 {
-	/**
+    /**
      * @var Twig
      */
     protected $twig;

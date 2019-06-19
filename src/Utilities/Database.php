@@ -62,7 +62,6 @@ class Database
      */
     public function exec(string $sql)
     {
-       return $this->pdo->exec($sql);
+        return $this->pdo->exec($sql);
     }
 }
-
