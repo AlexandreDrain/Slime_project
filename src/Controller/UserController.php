@@ -4,22 +4,23 @@ namespace App\Controller;
 use App\Utilities\AbstractController;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use App\Entity\Produit;
+use App\Entity\User;
 use App\Utilities\Database;
 use Slim\Views\Twig;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 
-class ProductController extends AbstractController
+class UserController extends AbstractController
 {
     /**
-     * @var ProductRepository
+     * @var UserRepository
      */
-    private $productRepository;
+    private $userRepository;
 
-    public function __construct(Twig $twig, ProductRepository $productRepository)
+    public function __construct(Twig $twig, UserRepository $userRepository)
     {
         parent::__construct($twig);
-        $this->productRepository = $productRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -31,12 +32,12 @@ class ProductController extends AbstractController
      */
     public function liste(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $products = $this->productRepository->findAll();
+        $users = $this->userRepository->findAll();
         // On renvoie les produits a la vue
         return $this->twig->render(
             $response,
-            'product/list.twig',
-            ['products' => $products]
+            'user/list.twig',
+            ['users' => $users]
         );
     }
 
@@ -49,7 +50,7 @@ class ProductController extends AbstractController
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $id = $args['id'];
+        /*$id = $args['id'];
         // Requête SQL
         $query = "SELECT * FROM produit WHERE etat_publication = 1 AND id = ?";
         // Exécution de la requête SQL et récupération des produits
@@ -64,6 +65,6 @@ class ProductController extends AbstractController
             $response,
             'product/show.twig',
             ['product' => $product[0]]
-        );
+        );*/
     }
 }

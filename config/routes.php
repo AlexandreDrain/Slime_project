@@ -4,6 +4,7 @@ use App\Controller\AuthController;
 use App\Controller\APIController;
 use App\Controller\HomeController;
 use App\Controller\ProductController;
+use App\Controller\UserController;
 
 // Création de pages de base
 $app->get('/', HomeController::class . ':home');
@@ -28,3 +29,4 @@ $app->group('/produit', function () {
 $app->get('/inscription', AuthController::class . ':register');
 $app->get('/connection', AuthController::class . ':connect');
 $app->get('/test', AuthController::class . ':test');
+$app->get('/utilisateurs', UserController::class . ':liste');

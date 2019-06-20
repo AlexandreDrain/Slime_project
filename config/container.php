@@ -16,6 +16,8 @@ use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
 use App\Utilities\Database;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
 return [
     'settings' => [
@@ -60,8 +62,12 @@ return [
             $container->get('settings')['displayErrorDetails']
         );
     },
-    'notFoundHandler' => function () {
-        return new NotFound;
+    'notFoundHandler' => function (ContainerInterface $container) {
+        return function (ServerRequestInterface $request, ResponseInterface $response) use ($container) {
+            return $container->get(Twig::class)
+            ->render($response, 'errors/error404.twig')
+            ->withStatus(404);
+        };
     },
     'notAllowedHandler' => function () {
         return new NotAllowed;
