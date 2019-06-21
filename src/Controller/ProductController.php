@@ -42,28 +42,29 @@ class ProductController extends AbstractController
 
     /**
      * Affichage du détail du produit
-     * @param  ServerRequestInterface $request
-     * @param  ResponseInterface      $response
-     * @param  array                  $args
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
      * @return ResponseInterface
      */
     public function show(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $id = $args['id'];
+        $isPublished = 1;
         // Requête SQL
-        $query = "SELECT * FROM produit WHERE etat_publication = 1 AND id = ?";
-        // Exécution de la requête SQL et récupération des produits
-        $product = $this->database->queryPrepared($query, [$id], Produit::class);
+        $product = $this->productRepository->findBy([
+            'id' => $args['id'],
+            'etat_publication' => $isPublished
+        ]);
         // On teste si un produit a été retourné
         if (empty($product)) {
             // Page d'erreur 404
-            $response = $response->withStatus(404);
-            return $this->twig->render($response, 'errors/error404.twig');
+            return $this->twig
+                ->render($response, 'errors/error404.twig')
+                ->withStatus(404)
+            ;
         }
-        return $this->twig->render(
-            $response,
-            'product/show.twig',
-            ['product' => $product[0]]
-        );
+        return $this->twig->render($response, 'product/show.twig', [
+            'product' => $product[0]
+        ]);
     }
 }
